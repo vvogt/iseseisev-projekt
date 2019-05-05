@@ -1,0 +1,269 @@
+body {
+    height: 100vh;
+    
+    background-color: #1f1a1a;
+    color: #ffffff;
+    font-family: Helvetica Neue,Helvetica,Arial,sans-serif; 
+    
+    margin: 0px;
+    padding: 0px;
+
+    overflow: hidden;
+}
+
+#about {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+    width: 100vw;
+}
+
+#menu {
+    width: 100vw;
+    position: relative;
+    
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    
+    text-align: center;
+    font-family: 'Fredoka One', cursive;
+    color: #ff4423;
+    letter-spacing: 5px;
+
+    z-index: 5;
+    box-shadow: 0px -15px 15px #1f1a1a;
+
+}
+
+.gallery {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    width: 90vw;
+    padding-top: 50px;
+
+    overflow-x: auto;
+
+    text-align: center;
+    justify-content: center;
+    align-content: flex-start;
+}
+
+.galleryThumb {
+    width: auto;
+    height: 20vh;
+/*     min-height: 150px;
+    min-width: 250px; */
+    
+    margin: 7px 10px;
+
+    overflow: hidden;
+}
+
+.galleryThumb img {
+    height: 100%;
+}
+
+/* .portrait img {
+    position: relative;
+    width: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.landscape img {
+    position: relative;
+    height: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+} */
+
+#menu * {
+    position: relative;
+    width: 30%;
+    height: 20vh;
+
+    opacity: 0;
+
+    transition: all 500ms cubic-bezier(0.605, 0.005, 0.515, 1.180);
+    -webkit-transition: all 500ms cubic-bezier(0.605, 0.005, 0.515, 1.180); 
+    -moz-transition: all 500ms cubic-bezier(0.605, 0.005, 0.515, 1.180);
+    
+    -webkit-animation:
+        appear 2s ease-out 0.5s forwards,
+        fromDown 1s cubic-bezier(0.075, 0.82, 0.165, 1) 0.25s forwards;
+    -moz-animation:
+        appear 2s ease-out 0.5s forwards,
+        fromDown 1s cubic-bezier(0.075, 0.82, 0.165, 1) 0.25s forwards;
+    animation:
+        appear 2s ease-out 0.5s forwards,
+        fromDown 1s cubic-bezier(0.075, 0.82, 0.165, 1) 0.25s forwards;
+}
+
+#menu *:hover {
+    letter-spacing: 2px;
+}
+
+.name {
+    position: relative;
+    
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 6em;
+    
+    opacity: 0;
+}
+
+#fName {
+    position: relative;
+
+    transition: all ease-out;
+
+    -webkit-animation:
+        appear 0.5s ease-out 0.5s forwards,
+        fromRight 2s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
+    -moz-animation:
+        appear 0.5s ease-out 0.5s forwards,
+        fromRight 2s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
+    animation:
+        appear 0.5s ease-out 0.5s forwards,
+        fromRight 2s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
+}
+
+#lName {
+    position: relative;
+    
+    left: 60px;
+    top: -40px;
+
+    transition: all ease-out;
+    
+    -webkit-animation:
+        appear 0.5s ease-out 0.75s forwards,
+        fromLeft 2s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
+    -moz-animation:
+        appear 0.5s ease-out 0.75s forwards,
+        fromLeft 2s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
+    animation:
+        appear 0.5s ease-out 0.75s forwards,
+        fromLeft 2s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
+}
+
+section {
+    height: 80vh;
+    padding: 0px;
+
+    display: flex;
+    justify-content: center;
+    
+    transition: all 500ms cubic-bezier(0.605, 0.005, 0.515, 1.180);
+    -webkit-transition: all 500ms cubic-bezier(0.605, 0.005, 0.515, 1.180); 
+    -moz-transition: all 500ms cubic-bezier(0.605, 0.005, 0.515, 1.180);
+}
+
+.selectBtn {
+    cursor: pointer;
+    padding: 5px 5px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hidden {
+    opacity: 0;
+    left: 200px;
+    display: none !important;
+}
+
+.activePage {
+    opacity: 0;
+    
+    animation: appear 3s ease-out forwards;
+    -webkit-animation: appear 3s ease-out forwards;
+    -moz-animation: appear 3s ease-out forwards;
+}
+
+
+@keyframes fromDown {
+    0% { top: -50px }
+    100% { top: 0px }
+}
+
+@-moz-keyframes fromDown {
+    0% { top: -50px }
+    100% { top: 0px }
+}
+
+@-webkit-keyframes fromDown {
+    0% { top: -50px }
+    100% { top: 0px }
+}
+
+@keyframes fromLeft {
+    0% { left: -100px; }
+    100% { left: 50px; }
+}
+
+@-moz-keyframes fromLeft {
+    0% { left: -100px; }
+    100% { left: 50px; }
+}
+
+@-webkit-keyframes fromLeft {
+    0% { left: -100px; }
+    100% { left: 50px; }
+}
+
+@keyframes fromRight {
+    0% { left: 100px; }
+    100% { left: 0px; }
+}
+
+@-moz-keyframes fromRight {
+    0% { left: 100px; }
+    100% { left: 0px; }
+}
+
+@-webkit-keyframes fromRight {
+    0% { left: 100px; }
+    100% { left: 0px; }
+}
+
+@keyframes appear {
+    0% { opacity: 0 }
+    100% { opacity: 1 }
+}
+
+@-webkit-keyframes appear {
+    0% { opacity: 0 }
+    100% { opacity: 1 }
+}
+
+@-moz-keyframes appear {
+    0% { opacity: 0 }
+    100% { opacity: 1 }
+}
+
+@-webkit-keyframes Gradient {
+	0% { background-position: 0% 50% }
+	50% { background-position: 100% 50% }
+	100% { background-position: 0% 50% }
+}
+
+@-moz-keyframes Gradient {
+	0% { background-position: 0% 50% }
+	50% { background-position: 100% 50% }
+	100% { background-position: 0% 50% }
+}
+
+@keyframes Gradient {
+	0% { background-position: 0% 50% }
+	50% { background-position: 100% 50% }
+	100% { background-position: 0% 50% }
+}
