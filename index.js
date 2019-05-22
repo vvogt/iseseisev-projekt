@@ -17,7 +17,6 @@ function setActive(event){
     }
 
     $('section').addClass('hidden');
-    /* classChange(btName); */
 
     if ($(this).is('#workBtn')) {
         $('#work').addClass('activePage');
@@ -25,12 +24,39 @@ function setActive(event){
     } else if ($(this).is('#aboutBtn')) {
         $('#about').addClass('activePage');
         $('#about').removeClass('hidden');
-    } else if ($(this).is('#otherBtn')) {
-        $('#about').addClass('activePage');
-        $('#about').removeClass('hidden');
+    } else if ($(this).is('#contactBtn')) {
+        $('#contact').addClass('activePage');
+        $('#contact').removeClass('hidden');
     }
+}
 
+function showPic(picId) {
+    $('.lightBox').css('display', 'flex');
+
+    let thumbPath = $('.gallery #' + picId).attr('src');
+    let imagePath = thumbPath.replace("thumbnails/thumb_", "work/");
+    $('.selectedPic').attr('src', imagePath);
+
+    let currentImg = new Image();
+    currentImg.src = imagePath;
+    currentImg.onload = function () {
+        let height = currentImg.height;
+        let width = currentImg.width;
+        
+        if (width > height) {
+            $('.selectedPic').css('width', '80vw');
+            $('.selectedPic').css('height', 'auto');
+            $('.selectedPic').css('max-width', width + 'px');
+        } else {
+            $('.selectedPic').css('height', '80vh');
+            $('.selectedPic').css('width', 'auto');
+            $('.selectedPic').css('max-height', height + 'px');
+        }
+    };
     
-    
-    /* if(this.class); */
+}
+
+function hideLightbox() {
+    $('.lightBox').css('display', 'none');
+    $('.selectedPic').attr('src', '');
 }
