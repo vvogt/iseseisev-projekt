@@ -1,5 +1,7 @@
 <?php
 
+$newFiles = FALSE;
+
 function renameFiles($path) {
     $path = $path .'/*';
     $fileList = glob($path);
@@ -29,13 +31,15 @@ function renameFiles($path) {
          
         if($nameCheck != 'vv_portfol') {
             //change permissions, so thumbnails can be created later
-            //didn't work, have to change permissions manually after uploading
             //chmod($filename, 0755);
+            //didn't work, have to change permissions manually after uploading
             
             //change filename
             $extension = explode(".",$filename);
             $newName .= '.' .$extension[1];
             rename($filename, $newName);
+
+            $GLOBALS['newFiles'] = TRUE;
         }
         $idCount++;
     }
@@ -69,33 +73,35 @@ function createThumbs($workPath) {
     $workPath .= '/*';
     $fileList = glob($workPath);
 
-    foreach ($fileList as $fileName) {
-        $oldPath = substr($fileName, 5, strlen($fileName)-1);
-        $newPath = 'thumbnails/thumb_' .$oldPath;
-
-        if (!file_exists($newPath)) {
-            list($width, $height, $type, $attr) = getimagesize($fileName);
-            $newWidth = 300;
-            $newHeight = $height/($width/$newWidth);
-            
-            $thumb = imagecreatetruecolor($newWidth, $newHeight);
-            
-            if ($type == 1) {
-                $source = imagecreatefromgif($fileName);
-            } elseif ($type == 2) {
-                $source = imagecreatefromjpeg($fileName);
-            } elseif ($type == 3) {
-                $source = imagecreatefrompng($fileName);
-            }
-
-            imagecopyresampled($thumb, $source, 0, 0, 0, 0, $newWidth, $newHeight, $width, $height);
-
-            if ($type == 1) {
-                imagegif($thumb, $newPath, 100);
-            } elseif ($type == 2) {
-                imagejpeg($thumb, $newPath, 100);
-            } elseif ($type == 3) {
-                imagepng($thumb, $newPath, 9);
+    if ($GLOBALS['newFiles'] == TRUE) {
+        foreach ($fileList as $fileName) {
+            $oldPath = substr($fileName, 5, strlen($fileName)-1);
+            $newPath = 'thumbnails/thumb_' .$oldPath;
+    
+            if (!file_exists($newPath)) {
+                list($width, $height, $type, $attr) = getimagesize($fileName);
+                $newWidth = 300;
+                $newHeight = $height/($width/$newWidth);
+                
+                $thumb = imagecreatetruecolor($newWidth, $newHeight);
+                
+                if ($type == 1) {
+                    $source = imagecreatefromgif($fileName);
+                } elseif ($type == 2) {
+                    $source = imagecreatefromjpeg($fileName);
+                } elseif ($type == 3) {
+                    $source = imagecreatefrompng($fileName);
+                }
+    
+                imagecopyresampled($thumb, $source, 0, 0, 0, 0, $newWidth, $newHeight, $width, $height);
+    
+                if ($type == 1) {
+                    imagegif($thumb, $newPath, 100);
+                } elseif ($type == 2) {
+                    imagejpeg($thumb, $newPath, 100);
+                } elseif ($type == 3) {
+                    imagepng($thumb, $newPath, 9);
+                }
             }
         }
     }

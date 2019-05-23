@@ -14,35 +14,41 @@
     <title>Vahur Vogt</title>
 </head>
 <body>
-    <div class="lightBox" onclick="hideLightbox()">
-        <div class="picContainer"><img class="selectedPic" src=""></div>
-    </div>
-    <section class="activePage" id="about">
-        <div class="name" id="fName">Vahur</div>
-        <div class="name" id="lName">Vogt</div>
-    </section>
-    <section class="hidden" id="work">
-        <div class="gallery">
-            <?php renameFiles('work'); ?>
-            <?php createThumbs('work'); ?>
-            <?php compareAndDelete('thumbnails'); ?>
-            <?php showPics('thumbnails'); ?>
+    <main>
+        <div class="lightBox" onclick="hideLightbox()">
+            <div class="picContainer"><img class="selectedPic" src=""></div>
         </div>
-    </section>
-    <section class="hidden" id="contact">
-        <div class="contact-form-title">
-            <h1>Kirjuta mulle</h1>
-            <h2>Küsi hinnapakkumist, paku tööd või kirjuta niisama :)</h2>
-        </div>
-        <div class="contact-form">
-            <form action="contact-form-functions" id="contact-form">
-                <input name="name" type="text" placeholder="Sinu nimi" type="name" required>
-                <input name="email" type="email" placeholder="Sinu e-mail" required>
-                <textarea name="message" placeholder="Sinu sõnum..." row="10" required></textarea>
-                <input type="submit" value="SAADA">            
-            </form>
-        </div>
-    </section>
+
+        <section class="activePage" id="about">
+            <div class="name" id="fName">Vahur</div>
+            <div class="name" id="lName">Vogt</div>
+        </section>
+
+        <section class="hidden" id="work">
+            <div class="gallery">
+                <?php renameFiles('work'); ?>
+                <?php createThumbs('work'); ?>
+                <?php compareAndDelete('thumbnails'); ?>
+                <?php showPics('thumbnails'); ?>
+            </div>
+        </section>
+
+        <section class="hidden" id="contact">
+            <div class="contact-form-title">
+                <h1>KIRJUTA MULLE</h1>
+                <h2>Küsi hinnapakkumist, paku tööd või kirjuta niisama :)</h2>
+            </div>
+            <div class="contact-form">
+                <form action="mail.php" method="POST">
+                    <input type="text" name="name" placeholder="Sinu nimi">
+                    <input type="text" name="email" placeholder="Sinu e-mail">
+                    <textarea name="message"></textarea>
+                    <input id="send-button" type="submit" value="SAADA">
+                </form>
+            </div>
+        </section>
+    </main>
+
     <div id="menu">
         <div class="selectBtn active" id="aboutBtn">ABOUT</div>
         <div class="selectBtn" id="workBtn">WORK</div>
