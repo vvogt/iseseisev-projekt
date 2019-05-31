@@ -11,12 +11,25 @@
     <link href="https://fonts.googleapis.com/css?family=Fredoka+One" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
     <script src="index.js"></script>
-    <title>Vahur Vogt</title>
+    <title>VVogt portfolio</title>
 </head>
 <body>
     <main>
-        <div class="lightBox" onclick="hideLightbox()">
-            <div class="picContainer"><img class="selectedPic" src=""></div>
+        <div class="lightBox" onclick="hideLightbox(event)">
+            <svg class="arrow" id="L-arrow" width="37px" height="71px" viewBox="0 0 37 71">
+                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                    <polyline id="Path" stroke="#979797" stroke-width="17" transform="translate(19.5, 35.4) rotate(-180) translate(-19.5, -35.4) " points="10 5 29 35.4 10 65.8"></polyline>
+                </g>
+            </svg>
+            <div class="picContainer">
+                <img class="selectedPic" src="">
+                <div id="loader" width="60px" height="60px" style="display: none"></div>
+            </div>
+            <svg class="arrow" id="R-arrow" width="37px" height="71px" viewBox="0 0 37 71">
+                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                    <polyline id="Path" stroke="#979797" stroke-width="17" points="8 5 27 35.4 8 65.8"></polyline>
+                </g>
+            </svg>
         </div>
 
         <section class="activePage" id="about">

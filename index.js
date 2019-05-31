@@ -2,11 +2,60 @@
 
 window.onload = function(){
     $('.selectBtn').click(setActive);
+    
+    $('.arrow').click(changePic);
+    $(document).keyup(function (event) {
+        if (event.which == 39) {
+            $('#L-arrow').trigger('click');
+        } else if (event.which == 37) {
+            $('#R-arrow').trigger('click');
+        }
+    });
 };
 
-function classChange(btName) {
+/* function classChange(btName) {
     $(btnName).addClass('activePage');
     $(btName).removeClass('hidden');
+} */
+
+function changePic(event) {
+    
+    let currentImgNum = getCurrentImgNum();
+    currentImgNum = currentImgNum.split('.');
+/*     let currentImgType = currentImgNum[1]; */
+    currentImgNum = currentImgNum[0];
+
+    if($(this).is('#L-arrow')){
+       
+        currentImgNum --;
+       
+        if (currentImgNum == 0) {
+            currentImgNum = $(".gallery").children().length;
+        }
+
+        showPic(currentImgNum);
+
+    } else {
+        currentImgNum++;
+
+        if (currentImgNum == $(".gallery").children().length) {
+            currentImgNum = 1;
+            console.log(currentImgNum);
+        }
+
+        showPic(currentImgNum);   
+    }
+
+    function getCurrentImgNum() {
+        //get current image num
+        let currentImgPath = $('.selectedPic').attr('src');
+        let currentImgNum = currentImgPath.split('_');
+        currentImgNum = currentImgNum[2];
+        return currentImgNum;
+    }
+
+    
+
 }
 
 function setActive(event){
@@ -31,11 +80,14 @@ function setActive(event){
 }
 
 function showPic(picId) {
-    $('.lightBox').css('display', 'flex');
 
-    let thumbPath = $('.gallery #' + picId).attr('src');
+    $('.lightBox').css('display', 'flex');
+    
+    let thumbPath = $('.gallery #img' + picId).attr('src');
+
     let imagePath = thumbPath.replace("thumbnails/thumb_", "work/");
     $('.selectedPic').attr('src', imagePath);
+
 
     let currentImg = new Image();
     currentImg.src = imagePath;
@@ -56,7 +108,9 @@ function showPic(picId) {
     
 }
 
-function hideLightbox() {
-    $('.lightBox').css('display', 'none');
-    $('.selectedPic').attr('src', '');
+function hideLightbox(e) {
+    if ($(e.target).attr('class') == 'lightBox') {
+        $('.lightBox').css('display', 'none');
+        $('.selectedPic').attr('src', '');
+    }
 }

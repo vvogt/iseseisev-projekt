@@ -2,6 +2,7 @@
 
 $newFiles = FALSE;
 
+
 function renameFiles($path) {
     $path = $path .'/*';
     $fileList = glob($path);
@@ -27,7 +28,12 @@ function renameFiles($path) {
     //if file hasn't been renamed yet, do it
     foreach($fileList as $filename){
         $nameCheck = ''.substr($filename, 5, 10);
-        $newName = 'work/vv_portfol_' .$idCount;
+        
+        if ($idCount < 10) {
+            $newName = 'work/vv_portfol_0' .$idCount;
+        } else {
+            $newName = 'work/vv_portfol_' .$idCount;
+        }
          
         if($nameCheck != 'vv_portfol') {
             //change permissions, so thumbnails can be created later
@@ -107,16 +113,38 @@ function createThumbs($workPath) {
     }
 }
 
-//show images from folder
+//show thumbnails from folder
 function showPics($path) {
     $path = $path .'/*';
     $fileList = glob($path);
-    $idCount = 0;
+    $idCount = 1;
 
     foreach($fileList as $filename){
 
-        echo '<img id="' .$idCount .'" src="' .$filename .'" onclick="showPic(' .$idCount .')">';
+        echo '<img id="img' .$idCount .'" src="' .$filename .'" onclick="showPic(' .$idCount .')">';
         $idCount ++;
     }
 }
+
+/* function imgChange($imgNum, $direction) {
+    $path = 'work/*';
+    $fileList = glob($path);
+    $nameToCheck = '';
+
+    $found = FALSE;
+
+    while ($found == FALSE) {
+        foreach($fileList as $fileName) {
+            $nameToCheck = ''.substr($fileName, 16, strlen($fileName)-1);
+            $extension = explode(".",$filename);
+            if ($extension[0] == $imgNum) {
+                $found = TRUE;
+            }
+        }
+    }
+
+    echo $nameToCheck;
+
+} */
+
 ?>

@@ -12,6 +12,27 @@ body {
     align-content: center;
 }
 
+.arrow {
+    padding: 10px;
+
+    height: 50px;
+    min-height: 50px;
+
+    z-index: 11;
+}
+
+.arrow:hover {
+    cursor: pointer;
+}
+
+#L-arrow {
+    padding-right: 20px;
+}
+
+#R-arrow {
+    padding-left: 20px;
+}
+
 #about {
     display: flex;
     flex-direction: column;
@@ -24,7 +45,12 @@ body {
 .lightBox {
     height: 100vh;
     width: 100vw;
-    background-color: #1f1a1a7e;
+
+    background-color: #000000bb;
+    position: absolute;
+    z-index: 10;
+
+    flex-wrap: none;
     
     display: none;
     justify-content: center;
@@ -33,12 +59,41 @@ body {
 
 .selectedPic {
     box-shadow: 0px 50px 50px #000000;
+    position: relative;
 }
 
-@media only screen and (max-width: 500px) {
+#loader {
+    background-color: rgb(109, 109, 109);
+}
+
+@media only screen and (max-width: 800px) {
+    .arrow {
+        margin: 10px 50px 0px 50px;
+    }
+    #L-arrow { order: 3; }
+    #R-arrow { order: 4; }
+    
+    .lightBox {
+        align-content: center;
+        align-items: flex-start;
+        flex-wrap: wrap;
+    }
+    
     .selectedPic {
-        width: 95vw !important;
+        width: 80vw !important;
         height: auto !important;
+    }
+}
+@media only screen and (max-width: 360px) {
+    .arrow {
+        margin: 0px;
+        padding-top: 20px;
+    }
+    #R-arrow {
+        padding-left: 30px;
+    }
+    #L-arrow {
+        padding-right: 30px;
     }
 }
 
@@ -159,11 +214,11 @@ h2 {
 }
 
 #contact form * {
-    margin: 5px 0px 5px 0px;
-    padding: 5px;
+    margin: 10px 0px 10px 0px;
+    padding: 5px 10px;
 
     border: 0px;
-    border-bottom: 1px solid #a2a2a2;
+    border-bottom: 1px solid #343434;
     
     color: #a2a2a2;
     background-color: #85858500;
@@ -172,13 +227,13 @@ h2 {
 }
 
 #contact form textarea {
-    background-color: rgb(48, 48, 48);
+    background-color: #303030;
     border: none;
     resize: none;
     height: 30vh;
     font-family: Helvetica Neue,Helvetica,Arial,sans-serif; 
     font-size: 1em;
-
+    padding: 5px 10px;
 }
 
 #contact form #send-button {
