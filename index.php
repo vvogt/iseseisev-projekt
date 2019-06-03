@@ -30,14 +30,31 @@
                     <polyline id="Path" stroke="#979797" stroke-width="17" points="8 5 27 35.4 8 65.8"></polyline>
                 </g>
             </svg>
+            <img id="close-icon" src="ui/x.svg" alt="close-icon">
         </div>
 
         <section class="activePage" id="about">
-            <div class="name" id="fName">Vahur</div>
-            <div class="name" id="lName">Vogt</div>
+            <div class="background">
+                <div id="star-container">
+                    <div class="layers" id="layer-top">
+                        <img class="stars star1" src="ui/t2hed_1.svg" alt="stars">
+                        <img class="stars star-b" src="ui/t2hed_1.svg" alt="stars">
+                    </div>
+                    <div class="layers" id="layer-bottom">
+                        <img class="stars star2" src="ui/t2hed_1.svg" alt="stars">
+                        <img class="stars star2-b" src="ui/t2hed_1.svg" alt="stars">
+                    </div>
+                </div>
+            </div>
+            <div id="fullname">
+                <div class="name" id="fName">Vahur</div>
+                <div class="name" id="lName">Vogt</div>
+                <img src="ui/VV_pea.svg" alt="vahur's head" class="head">
+            </div>
         </section>
 
         <section class="hidden" id="work">
+            
             <div class="gallery">
                 <?php renameFiles('work'); ?>
                 <?php createThumbs('work'); ?>

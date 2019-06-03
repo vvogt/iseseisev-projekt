@@ -12,6 +12,95 @@ body {
     align-content: center;
 }
 
+.background {
+    width: 100%;
+    height: 80vh;
+    position: absolute;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.layers {
+    top: 0;
+    height: 80vh;
+    position: relative;
+}
+
+#layer-top {
+    z-index: 2;
+    opacity: 1;
+
+    
+    animation: starScroll 60s alternate ease-in-out infinite;
+    -webkit-animation: starScroll 60s alternate ease-in-out infinite;
+    -moz-animation: starScroll 60s alternate ease-in-out infinite;
+}
+
+#layer-bottom {
+    opacity: 0.8;
+    
+    z-index: 1;
+
+    top: -80vh;
+
+    animation: starScrollB 80s alternate ease-in-out infinite;
+    -webkit-animation: starScrollB 80s alternate ease-in-out infinite;
+    -moz-animation: starScrollB 80s alternate ease-in-out infinite;
+}
+
+#layer-bottom * {
+/*     -webkit-transform: scaleX(-1);
+    transform: scaleX(-1); */
+}
+
+.stars {
+    height: 80vh;
+    min-width: 100vh;
+    position: absolute;
+    top: 0;
+}
+
+#layer-bottom .stars {
+}
+
+.star-b {
+    transform: translate(100%, 0);
+}
+
+.star2-b {
+    transform: translate(-100%, 0);
+}
+
+.head {
+    height: 55px;
+    position: relative;
+    z-index: 3;
+
+    top: -120px;
+    left: 112px;
+
+    opacity: 0;
+    transform-origin: center;
+    transform: scale(0.5) rotate(20deg);
+
+    transition: all 0.5s cubic-bezier(.81,.08,.43,1.19);
+    
+}
+
+#fullname:hover > .head {
+    transform: scale(1) rotate(-15deg);
+    opacity: 1;
+}
+
+#close-icon {
+    position: absolute;
+    right: 5vh;
+    top: 5vh;
+
+    height: 30px;
+    width: auto;
+}
+
 .arrow {
     padding: 10px;
 
@@ -40,6 +129,7 @@ body {
     justify-content: center;
     
     width: 100vw;
+    overflow: hidden;
 }
 
 .lightBox {
@@ -117,7 +207,7 @@ main {
     align-content: center;
     
     text-align: center;
-    font-family: 'Fredoka One', cursive;
+    font-family: 'Fredoka One', sans-serif;
     color: #ff4423;
     letter-spacing: 5px;
 
@@ -160,9 +250,10 @@ main {
 }
 
 h1 {
-    font-family: 'Fredoka One', cursive;
+    font-family: 'Josefin Sans', sans-serif;
     color: #ff4423;
     font-size: 30px;
+    font-weight: 500;
     letter-spacing: 5px;
 }
 
@@ -292,6 +383,7 @@ h2 {
 
 .name {
     position: relative;
+    cursor: help;
     
     font-family: 'Josefin Sans', sans-serif;
     font-size: 6em;
@@ -367,6 +459,16 @@ section {
     animation: appear 3s ease-out forwards;
     -webkit-animation: appear 3s ease-out forwards;
     -moz-animation: appear 3s ease-out forwards;
+}
+
+@keyframes starScroll {
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(-100%, 0); }
+}
+
+@keyframes starScrollB {
+    0% { transform: translate(0, 0) scale(-1, -1); }
+    100% { transform: translate(-100%, 0) scale(-1, -1); }
 }
 
 @keyframes flicker {

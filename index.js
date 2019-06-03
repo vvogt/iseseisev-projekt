@@ -11,12 +11,33 @@ window.onload = function(){
             $('#R-arrow').trigger('click');
         }
     });
+
+    document.addEventListener("mousemove", function(e){
+        let x = e.clientX;
+        let y = e.clientY;
+        
+        if (y < document.documentElement.clientHeight/2) {
+            y = (document.documentElement.clientHeight/2 - y) * -1;
+        } else if (y > document.documentElement.clientHeight/2) {
+            y = (y - document.documentElement.clientHeight/2);
+        }
+
+        if (x < document.documentElement.clientWidth / 2) {
+            x = (document.documentElement.clientWidth / 2 - x) * -1;
+        } else if (x > document.documentElement.clientWidth / 2) {
+            x = (x - document.documentElement.clientWidth / 2);
+        }
+
+        $('#layer-top').css('top', y*0.025);
+        $('#fullname').css('top', y*0.5);
+    });
 };
 
 /* function classChange(btName) {
     $(btnName).addClass('activePage');
     $(btName).removeClass('hidden');
 } */
+
 
 function changePic(event) {
     
@@ -109,7 +130,9 @@ function showPic(picId) {
 }
 
 function hideLightbox(e) {
-    if ($(e.target).attr('class') == 'lightBox') {
+    console.log($(e.target).attr('class'));
+    console.log($(e.target).attr('id'));
+    if ($(e.target).attr('class') == 'lightBox' || $(e.target).attr('id') == 'close-icon') {
         $('.lightBox').css('display', 'none');
         $('.selectedPic').attr('src', '');
     }

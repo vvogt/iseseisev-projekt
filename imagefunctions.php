@@ -10,17 +10,27 @@ function renameFiles($path) {
 
     //check for largest id from filename
     foreach ($fileList as $filename) {
-        $nameCheck = substr($filename, 5, 15);
-        
-        if($nameCheck == 'vv_porftol') {
+        $nameCheck = substr($filename, 5, 10);
+        if ($nameCheck == 'vv_portfol') {
+            $nameArray = explode(".",$filename);
+            $id = substr($nameArray[0], strlen($nameArray[0])-2, strlen($nameArray[0])-1);
+
+            if ($id > $idCount) {
+                $idCount = $id;
+            }
+
+        }
+
+        /* if ($nameCheck == 'vv_porftol') {
             $nameArray = explode(".",$filename);
 
             $id = substr($nameArray[0], 16,  strlen($nameArray[0])-1);
+            echo $id;
             
             if ($id > $idCount) {
                 $idCount = $id;
             }
-        }
+        } */
     }
     
     $idCount++;
