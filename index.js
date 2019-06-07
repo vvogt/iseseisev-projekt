@@ -6,29 +6,32 @@ window.onload = function(){
     $('.arrow').click(changePic);
     $(document).keyup(function (event) {
         if (event.which == 39) {
-            $('#L-arrow').trigger('click');
-        } else if (event.which == 37) {
             $('#R-arrow').trigger('click');
+        } else if (event.which == 37) {
+            $('#L-arrow').trigger('click');
         }
     });
 
     document.addEventListener("mousemove", function(e){
         let x = e.clientX;
         let y = e.clientY;
+
+        let screenHeight = document.documentElement.clientHeight;
+        let screenWidth = document.documentElement.clientWidth;
         
-        if (y < document.documentElement.clientHeight/2) {
-            y = (document.documentElement.clientHeight/2 - y) * -1;
-        } else if (y > document.documentElement.clientHeight/2) {
-            y = (y - document.documentElement.clientHeight/2);
+        if (y < screenHeight / 2) {
+            y = (screenHeight / 2 - y) * -1;
+        } else if (y >= screenHeight / 2) {
+            y = (y - screenHeight / 2);
         }
 
-        if (x < document.documentElement.clientWidth / 2) {
-            x = (document.documentElement.clientWidth / 2 - x) * -1;
-        } else if (x > document.documentElement.clientWidth / 2) {
-            x = (x - document.documentElement.clientWidth / 2);
+        if (x < screenWidth / 2) {
+            x = (screenWidth / 2 - x) * -1;
+        } else if (x > screenWidth / 2) {
+            x = (x - screenWidth / 2);
         }
 
-        $('#layer-top').css('top', y*0.025);
+        $('#layer-top').css('top', y*0.015);
         $('#fullname').css('top', y*0.5);
     });
 };
@@ -58,6 +61,7 @@ function changePic(event) {
 
     } else {
         currentImgNum++;
+        console.log(currentImgNum);
 
         if (currentImgNum == $(".gallery").children().length) {
             currentImgNum = 1;

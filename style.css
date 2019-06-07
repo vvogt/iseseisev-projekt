@@ -29,7 +29,6 @@ body {
 #layer-top {
     z-index: 2;
     opacity: 1;
-
     
     animation: starScroll 60s alternate ease-in-out infinite;
     -webkit-animation: starScroll 60s alternate ease-in-out infinite;
@@ -83,7 +82,7 @@ body {
     transform-origin: center;
     transform: scale(0.5) rotate(20deg);
 
-    transition: all 0.5s cubic-bezier(.81,.08,.43,1.19);
+    transition: all 0.25s cubic-bezier(.81,.08,.43,1.19);
     
 }
 
@@ -157,9 +156,7 @@ body {
 }
 
 @media only screen and (max-width: 800px) {
-    .arrow {
-        margin: 10px 50px 0px 50px;
-    }
+    .arrow { margin: 10px 50px 0px 50px; }
     #L-arrow { order: 3; }
     #R-arrow { order: 4; }
     
