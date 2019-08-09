@@ -12,7 +12,7 @@ window.onload = function(){
         }
     });
 
-    document.addEventListener("mousemove", function(e){
+/*     document.addEventListener("mousemove", function(e){
         let x = e.clientX;
         let y = e.clientY;
 
@@ -33,7 +33,7 @@ window.onload = function(){
 
         $('#layer-top').css('top', y*0.015);
         $('#fullname').css('top', y*0.5);
-    });
+    }); */
 };
 
 /* function classChange(btName) {
@@ -72,7 +72,7 @@ function changePic(event) {
     }
 
     function getCurrentImgNum() {
-        //get current image num
+        //get current image number
         let currentImgPath = $('.selectedPic').attr('src');
         let currentImgNum = currentImgPath.split('_');
         currentImgNum = currentImgNum[2];
@@ -101,6 +101,7 @@ function setActive(event){
     } else if ($(this).is('#contactBtn')) {
         $('#contact').addClass('activePage');
         $('#contact').removeClass('hidden');
+/*         $('menu').css('box').removeProperty('box-shadow'); */
     }
 }
 
@@ -124,19 +125,32 @@ function showPic(picId) {
             $('.selectedPic').css('width', '80vw');
             $('.selectedPic').css('height', 'auto');
             $('.selectedPic').css('max-width', width + 'px');
+            $('.selectedPic').addClass('landscape');
+            $('.selectedPic').removeClass('portrait');
+
+            if (screen.width < 400) {
+                $('.selectedPic').css('width', '80vw');
+                $('.selectedPic').css('height', 'auto');
+            }
+
         } else {
             $('.selectedPic').css('height', '80vh');
             $('.selectedPic').css('width', 'auto');
             $('.selectedPic').css('max-height', height + 'px');
+            $('.selectedPic').addClass('portrait');
+            $('.selectedPic').removeClass('portrait');
+
+            if (screen.width < 400) {
+                $('.selectedPic').css('height', '60vh');
+                $('.selectedPic').css('width', 'auto');
+            }
         }
     };
     
 }
 
 function hideLightbox(e) {
-    console.log($(e.target).attr('class'));
-    console.log($(e.target).attr('id'));
-    if ($(e.target).attr('class') == 'lightBox' || $(e.target).attr('id') == 'close-icon') {
+    if ($(e.target).attr('class') == 'lightBox' || $(e.target).attr('id') == 'close-icon' || $(e.target).attr('class') == 'picContainer' || $(e.target).attr('class') == 'selectedPic') {
         $('.lightBox').css('display', 'none');
         $('.selectedPic').attr('src', '');
     }

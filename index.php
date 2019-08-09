@@ -15,6 +15,26 @@
 </head>
 <body>
     <main>
+        <section class="activePage" id="about">
+            <div class="background">
+                <div class="bg-layer">
+                    <img class="stars" src="ui/t2hed_1.svg" alt="stars">
+                    <img class="stars" src="ui/t2hed_1.svg" alt="stars">
+                    <img class="stars" src="ui/t2hed_1.svg" alt="stars">
+                </div>
+                <div class="bg-layer slower">
+                    <img class="stars" src="ui/t2hed.svg" alt="stars">
+                    <img class="stars" src="ui/t2hed.svg" alt="stars">
+                    <img class="stars" src="ui/t2hed.svg" alt="stars">
+                </div>
+            </div>
+            <div id="fullname">
+                <div class="name" id="fName">Vahur</div>
+                <div class="name" id="lName">Vogt</div>
+<!--                 <img src="ui/VV_pea.svg" alt="vahur's head" class="head"> -->
+            </div>
+        </section>
+
         <div class="lightBox" onclick="hideLightbox(event)">
             <svg class="arrow" id="L-arrow" width="37px" height="71px" viewBox="0 0 37 71">
                 <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -23,7 +43,7 @@
             </svg>
             <div class="picContainer">
                 <img class="selectedPic" src="">
-                <div id="loader" width="60px" height="60px" style="display: none"></div>
+<!--                 <div id="loader" width="60px" height="60px" style="display: none"></div> -->
             </div>
             <svg class="arrow" id="R-arrow" width="37px" height="71px" viewBox="0 0 37 71">
                 <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -33,28 +53,7 @@
             <img id="close-icon" src="ui/x.svg" alt="close-icon">
         </div>
 
-        <section class="activePage" id="about">
-            <div class="background">
-                <div id="star-container">
-                    <div class="layers" id="layer-top">
-                        <img class="stars star1" src="ui/t2hed_1.svg" alt="stars">
-                        <img class="stars star-b" src="ui/t2hed_1.svg" alt="stars">
-                    </div>
-                    <div class="layers" id="layer-bottom">
-                        <img class="stars star2" src="ui/t2hed_1.svg" alt="stars">
-                        <img class="stars star2-b" src="ui/t2hed_1.svg" alt="stars">
-                    </div>
-                </div>
-            </div>
-            <div id="fullname">
-                <div class="name" id="fName">Vahur</div>
-                <div class="name" id="lName">Vogt</div>
-                <img src="ui/VV_pea.svg" alt="vahur's head" class="head">
-            </div>
-        </section>
-
         <section class="hidden" id="work">
-            
             <div class="gallery">
                 <?php renameFiles('work'); ?>
                 <?php createThumbs('work'); ?>
@@ -66,7 +65,7 @@
         <section class="hidden" id="contact">
             <div class="contact-form-title">
                 <h1>KIRJUTA MULLE</h1>
-                <h2>Küsi hinnapakkumist, paku tööd või kirjuta niisama :)</h2>
+                <a href="mailto: vahur.vogt@gmail.com">vahur.vogt@gmail.com</a>
             </div>
             <div class="contact-form">
                 <form action="mail.php" method="POST">
@@ -80,9 +79,9 @@
     </main>
 
     <div id="menu">
-        <div class="selectBtn active" id="aboutBtn">ABOUT</div>
-        <div class="selectBtn" id="workBtn">WORK</div>
-        <div class="selectBtn" id="contactBtn">CONTACT</div>
+        <div class="selectBtn active" id="aboutBtn">MINUST</div>
+        <div class="selectBtn" id="workBtn">TÖÖD</div>
+        <div class="selectBtn" id="contactBtn">KONTAKT</div>
     </div>
 
 
